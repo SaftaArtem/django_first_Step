@@ -1,8 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-	<h1>Home template title</h1>
-	<h1>{{ title }}</h1>
-		
+			
 	{% for cat_item in catalog %}
 	<div>
 		<h1>{{ cat_item.title }}</h1>
