@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	{% for catalog_item in catalog %}
+		<div>
+			<h2><a href="{% url 'catalog_detail' catalog_item.id %}">{{catalog_item.title}}</a></h2>
+			<div>
+				{{catalog_item.discription}}
+			</div>
+		</div>
+	{% endfor  %}
+{% endblock %}
