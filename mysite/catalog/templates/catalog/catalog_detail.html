@@ -2,6 +2,9 @@
 
 {% block content %}
 	<div>
+		<a class="btn btn-primary" href="{% url 'catalog:home' %}">&larr; Retirn back to Catalog</a><br><br>
+	</div>
+	<div>
 		{{ catalog_item.discription }}
 	</div>
 {% endblock %}
