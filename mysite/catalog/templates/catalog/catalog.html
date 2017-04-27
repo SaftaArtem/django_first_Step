@@ -9,4 +9,20 @@
 			</div>
 		</div>
 	{% endfor  %}
+
+	<div class="pagination">
+    	<span class="step-links">
+        	{% if catalog.has_previous %}
+            	<a href="?page={{ catalog.previous_page_number }}">previous</a>
+        	{% endif %}
+
+        	<span class="current">
+            	Page {{ catalog.number }} of {{ catalog.paginator.num_pages }}.
+        	</span>
+
+        	{% if catalog.has_next %}
+            	<a href="?page={{ catalog.next_page_number }}">next</a>
+        	{% endif %}
+    	</span>
+	</div>
 {% endblock %}
