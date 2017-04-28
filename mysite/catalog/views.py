@@ -5,7 +5,7 @@ from .models import Catalog
 
 def catalog_home(request):
     catalog_list = Catalog.objects.all()
-    paginator = Paginator(catalog_list, 3) # Show 25 contacts per page
+    paginator = Paginator(catalog_list, 1) # Show 25 contacts per page
 
     page = request.GET.get('page')
     try:

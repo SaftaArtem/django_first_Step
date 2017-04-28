@@ -10,7 +10,7 @@
 		</div>
 	{% endfor  %}
 
-	<div class="pagination">
+<!--	<div class="pagination">
     	<span class="step-links">
         	{% if catalog.has_previous %}
             	<a href="?page={{ catalog.previous_page_number }}">previous</a>
@@ -24,5 +24,39 @@
             	<a href="?page={{ catalog.next_page_number }}">next</a>
         	{% endif %}
     	</span>
+	</div>-->
+
+	<div class="text-center">
+		<ul class="pagination">
+			{% if catalog.number > 1 %}
+				<li><a href="?page=1">&laquo; First page</a></li>
+			{% else %}
+				<li class="disabled"><a href="">&laquo; First page</a></li>
+			{% endif %}
+
+			{% if catalog.has_previous %}
+				<li><a href="?page={{ catalog.previous_page_number }}">&laquo; Prev</a></li>
+			{% else %}
+				<li class="disabled"><a href="">&laquo; Prev </a></li>
+			{% endif %}
+
+			{% if catalog.number > 1 %}
+				{% for page in catalog.paginator.page_range %}
+					<li class="{% if catalog.number == page %}active{% endif %}"><a href="?page={{ page }}">{{ page }}</a></li>
+				{% endfor %}
+			{% endif %}
+
+			{% if catalog.has_next %}
+				<li><a href="?page={{ catalog.next_page_number}}">Next &raquo;</a></li>
+			{% else %}
+				<li class="disabled"><a href="">Next &raquo;</a></li>
+			{% endif %}
+
+			{% if catalog.number < catalog.paginator.num_pages %}
+				<li><a href="?page={{ catalog.paginator.num_pages }}">Last page &raquo;</a></li>
+			{% else %}
+			<li class="disabled"><a href="">Last page &raquo;</a></li>
+			{% endif %}
+		</ul>
 	</div>
 {% endblock %}
