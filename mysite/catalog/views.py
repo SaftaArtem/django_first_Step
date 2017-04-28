@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import Catalog
 #from django.http import HttpResponse
@@ -16,6 +16,8 @@ def catalog_home(request):
     except EmptyPage:
         # If page is out of range (e.g. 9999), deliver last page of results.
         catalog = paginator.page(paginator.num_pages)
+    if page == 1:
+    	return redirect('catalog:home', permanent=True)
     context = {
     	'page_header': 'Catalog page',
     	'catalog': catalog,

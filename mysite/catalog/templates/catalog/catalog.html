@@ -5,7 +5,7 @@
 		<div>
 			<h2><a href="{% url 'catalog:detail' catalog_item.id %}">{{catalog_item.title}}</a></h2>
 			<div>
-				{{catalog_item.discription}}
+				{{catalog_item.discription| truncatechars:200}}
 			</div>
 		</div>
 	{% endfor  %}
